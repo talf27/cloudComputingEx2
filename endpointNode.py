@@ -219,7 +219,7 @@ def scale_up():
 
     # Wait for the script to fully complete installations and start the Flask server
     # (The script runs in about 25 seconds, but for just in case, wait for 60 seconds...)
-    time.sleep(60)
+    time.sleep(45)
 
     EndpointNode.allowed_workers_ip.append(new_worker_ip)
     url = f'http://{EndpointNode.other_node_ip}:5000/addWorkerIP'
