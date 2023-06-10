@@ -2,4 +2,4 @@
 
 sudo apt update
 sudo apt install python3-flask -y
-nohup python3 worker.py
+nohup python3 worker.py >/dev/null 2>&1 &
