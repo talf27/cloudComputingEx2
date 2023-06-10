@@ -1,0 +1,23 @@
+Guide to Handling Failures in the System:
+
+1. Machine Failures:
+When some worker instance fails due to some issues and not works well, we can handle it in the following ways:
+- Build an instance monitoring system to detect failures and automatically replace failed worker instances with new ones.
+- Use an instance health check mechanism to ensure the workers are responsive (for example, by ping them periodically) and terminate unresponsive workers.
+- Implement retry mechanisms for failed computations: Failed work items will be re-enqueued for processing in the main node they enqueued initially and another health worker will get it and try to process it again.
+
+2. Network Splits:
+When network partitions occur, causing communication failures between the main endpoint nodes, we can handle it in the following ways:
+- Implement timeouts and retries for network operations to handle temporary network failures.
+- Implement redundancy and replication nodes across multiple availability zones or regions.
+- When one node is down, its backup node will send the work queue and the completed work items queue to the other node - that backup node won't do anything except keep these queues backup for that failures scenarios, so the risk for that backup node to fail due to overload will be lower.
+
+3. Data Corruption:
+When data (from the enqueue requests body or the HTTP requests parameters) corruption occurs during transit or storage, leading to incorrect computation results, we can handle it in the following ways:
+- Implement checksums or verification mechanisms to ensure data integrity during transit and storage.
+- Store the same data across multiple storage systems or use data replication techniques to minimize the risk of data loss or corruption.
+
+4. System Overload:
+When some instance experiences a high volume of incoming work items, overwhelming its resources, we can handle it in the following ways:
+- Use queuing mechanisms to buffer incoming requests and prioritize them based on the number of iterations to the computation required in the enqueue request.
+- Set limits or quotas on the maximum number of work items a user can enqueue to prevent abuse and ensure fair resource allocation.
