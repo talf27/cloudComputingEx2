@@ -169,7 +169,7 @@ echo
 
 # Setting up initial data for the two main endpoint nodes: Their IP, the other node IP, 
 # the security group for each node's workers and the keypair for creating new workers
-echo "Setting up initial data for the two main endpoint nodes by HTTP request to a defined endpoint:"
+echo "Setting up initial data for the two main endpoint nodes by HTTP request to a defined endpoint."
 curl -X PUT "http://$FIRST_MAIN_NODE_IP:5000/setNodeData?myIP=$FIRST_MAIN_NODE_IP&otherIP=$SECOND_MAIN_NODE_IP&secGrpId=$SEC_GRP_WORKERS_1&keypairName=$KEY_NAME"
 curl -X PUT "http://$SECOND_MAIN_NODE_IP:5000/setNodeData?myIP=$SECOND_MAIN_NODE_IP&otherIP=$FIRST_MAIN_NODE_IP&secGrpId=$SEC_GRP_WORKERS_2&keypairName=$KEY_NAME"
 
