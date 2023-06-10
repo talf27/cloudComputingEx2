@@ -27,7 +27,7 @@ after cloning the repository:
 - install AWS CLI
 - configure AWS setup with access keys of an existing user and **region: eu-west-1 - Europe (Ireland)**
 - *cd ./cloudComputingEx2/*
-- **run *dos2unix setupWorker.sh* or *sed -i 's/\r$//' setupWorker.sh* if the "dos2unix" command doesn't work**\
+- **run *"dos2unix setupWorker.sh"* or *"sed -i 's/\r$//' setupWorker.sh"* if the "dos2unix" command doesn't work**\
 (That's because that script is with CRLF line ending because of the git push and it should be with LF\
 so it can run properly in the new created workers).
 - run the bash script that deploys the code to the cloud: *bash setup.sh*
